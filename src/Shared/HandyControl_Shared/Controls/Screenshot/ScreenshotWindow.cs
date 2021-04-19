@@ -695,7 +695,7 @@ namespace HandyControl.Controls
 
             _targetWindowRect = new Rect(left, top, width, height);
             Size = _targetWindowRect.Size;
-            SizeStr = $"{_targetWindowRect.Width * DpiHelper.DpiScaleX} x {_targetWindowRect.Height * DpiHelper.DpiScaleY}";
+            SizeStr = $"{(int)(_targetWindowRect.Width * DpiHelper.DpiScaleX)} x {(int)(_targetWindowRect.Height * DpiHelper.DpiScaleY)}";
 
             MoveMaskArea();
         }
