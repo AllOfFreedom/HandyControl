@@ -1602,7 +1602,7 @@
 	<ControlTemplate x:Key="PreviewSliderHorizontal" TargetType="hc:PreviewSlider">
 		<hc:SimplePanel>
 			<Border x:Name="TrackBackground" Background="{TemplateBinding Background}" Height="2" VerticalAlignment="center" Margin="9,0" />
-			<Track Margin="9,0" x:Name="PART_Track">
+			<Track VerticalAlignment="center" Margin="9,0" x:Name="PART_Track">
 				<Track.DecreaseRepeatButton>
 					<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Background="{DynamicResource PrimaryBrush}" Style="{StaticResource PreviewSliderRepeatButtonHorizontalStyle}" />
 				</Track.DecreaseRepeatButton>
@@ -1618,7 +1618,7 @@
 	<ControlTemplate x:Key="PreviewSliderVertical" TargetType="hc:PreviewSlider">
 		<hc:SimplePanel>
 			<Border x:Name="TrackBackground" Background="{TemplateBinding Background}" Width="2" HorizontalAlignment="center" Margin="0,9" />
-			<Track Margin="0,9" x:Name="PART_Track">
+			<Track HorizontalAlignment="center" Margin="0,9" x:Name="PART_Track">
 				<Track.DecreaseRepeatButton>
 					<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Background="{DynamicResource PrimaryBrush}" Style="{StaticResource PreviewSliderRepeatButtonVerticalStyle}" />
 				</Track.DecreaseRepeatButton>
@@ -5090,6 +5090,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Style.Triggers>
 			<Trigger Property="IsEditable" Value="true">
 				<Setter Property="IsTabStop" Value="false" />
@@ -5895,6 +5896,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="ComboBoxPlusBaseStyle" BasedOn="{StaticResource ComboBoxExtendBaseStyle}" TargetType="hc:ComboBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource ComboBoxPlusTopTemplate}" />
 		<Style.Triggers>
 			<MultiTrigger>
@@ -6173,6 +6175,7 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TextBox">
@@ -6382,6 +6385,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="TextBoxPlusBaseStyle" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="hc:TextBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource TextBoxPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -7065,6 +7069,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="Template" Value="{StaticResource CheckComboBoxTemplate}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 	</Style>
 	<ControlTemplate x:Key="CheckComboBoxExtendTopTemplate" TargetType="hc:CheckComboBox">
 		<Grid>
@@ -7449,6 +7454,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="CheckComboBoxPlusBaseStyle" BasedOn="{StaticResource CheckComboBoxExtendBaseStyle}" TargetType="hc:CheckComboBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource CheckComboBoxPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -7732,6 +7738,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="DatePicker">
@@ -8035,6 +8042,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DatePickerPlusBaseStyle" BasedOn="{StaticResource DatePickerExtendBaseStyle}" TargetType="hc:DatePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="Template" Value="{StaticResource DatePickerPlusTopTemplate}" />
 		<Style.Triggers>
@@ -8054,6 +8062,7 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:DateTimePicker">
@@ -8357,6 +8366,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DateTimePickerPlusBaseStyle" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -9148,6 +9158,7 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:NumericUpDown">
@@ -9406,6 +9417,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="NumericUpDownPlusBaseStyle" BasedOn="{StaticResource NumericUpDownExtendBaseStyle}" TargetType="hc:NumericUpDown">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource NumericUpDownPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -9430,6 +9442,7 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="PasswordBox">
@@ -9675,6 +9688,8 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="PasswordBoxPlusBaseStyle" TargetType="hc:PasswordBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -10596,6 +10611,7 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:TimePicker">
@@ -10899,6 +10915,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="TimePickerPlusBaseStyle" BasedOn="{StaticResource TimePickerExtendBaseStyle}" TargetType="hc:TimePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource TimePickerPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -11899,44 +11916,44 @@
 						</Storyboard>
 					</ControlTemplate.Resources>
 					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-						<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-							<hc:ToggleBlock.CheckedContent>
-								<ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
-									<ScrollViewer.Template>
-										<ControlTemplate TargetType="ScrollViewer">
-											<Grid>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition Width="Auto" />
-													<ColumnDefinition Width="*" />
-													<ColumnDefinition Width="Auto" />
-												</Grid.ColumnDefinitions>
-												<Grid.RowDefinitions>
-													<RowDefinition Height="Auto" />
-													<RowDefinition Height="*" />
-												</Grid.RowDefinitions>
-												<Button Command="{x:Static DataGrid.SelectAllCommand}" Margin="0,0,0,6" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource AllGeometry}" Foreground="{DynamicResource PrimaryBrush}" />
-												<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-												<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
-												<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
-												<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" />
-											</Grid>
-											<ControlTemplate.Triggers>
-												<EventTrigger RoutedEvent="MouseEnter">
-													<BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
-												</EventTrigger>
-												<EventTrigger RoutedEvent="MouseLeave">
-													<BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
-												</EventTrigger>
-											</ControlTemplate.Triggers>
-										</ControlTemplate>
-									</ScrollViewer.Template>
-									<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-								</ScrollViewer>
-							</hc:ToggleBlock.CheckedContent>
-							<hc:ToggleBlock.UnCheckedContent>
-								<hc:Empty />
-							</hc:ToggleBlock.UnCheckedContent>
-						</hc:ToggleBlock>
+						<ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
+							<ScrollViewer.Template>
+								<ControlTemplate TargetType="ScrollViewer">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="*" />
+										</Grid.RowDefinitions>
+										<Button Command="{x:Static DataGrid.SelectAllCommand}" Margin="0,0,0,6" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource AllGeometry}" Foreground="{DynamicResource PrimaryBrush}" />
+										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+										<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+											<hc:ToggleBlock.CheckedContent>
+												<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+											</hc:ToggleBlock.CheckedContent>
+											<hc:ToggleBlock.UnCheckedContent>
+												<hc:Empty />
+											</hc:ToggleBlock.UnCheckedContent>
+										</hc:ToggleBlock>
+										<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
+										<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" />
+									</Grid>
+									<ControlTemplate.Triggers>
+										<EventTrigger RoutedEvent="MouseEnter">
+											<BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
+										</EventTrigger>
+										<EventTrigger RoutedEvent="MouseLeave">
+											<BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
+										</EventTrigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</ScrollViewer.Template>
+							<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</ScrollViewer>
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
