@@ -3030,6 +3030,7 @@
 	<Style x:Key="ButtonIcon" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="hc:BorderElement.CornerRadius" Value="0" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3567,6 +3568,7 @@
 	<Style x:Key="RepeatButtonIcon" BasedOn="{StaticResource RepeatButtonBaseStyle}" TargetType="RepeatButton">
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="hc:BorderElement.CornerRadius" Value="0" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3885,9 +3887,9 @@
 								<RowDefinition Height="*" />
 							</Grid.RowDefinitions>
 							<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,1,0,0'}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" Grid.ColumnSpan="3" />
-							<Button x:Name="PART_PreviousButton" Width="50" HorizontalAlignment="Left" Grid.Column="0" Height="50" Padding="16" Focusable="False" Grid.Row="0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource LeftGeometry}" />
-							<Button x:Name="PART_HeaderButton" Focusable="False" Foreground="White" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Grid.Row="0" Style="{StaticResource ButtonCustom}" />
-							<Button x:Name="PART_NextButton" Width="50" HorizontalAlignment="Right" Height="50" Padding="16" Grid.Column="2" Focusable="False" Grid.Row="0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RightGeometry}" />
+							<Button x:Name="PART_PreviousButton" Width="50" Foreground="{DynamicResource TextIconBrush}" HorizontalAlignment="Left" Grid.Column="0" Height="50" Padding="16" Focusable="False" Grid.Row="0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource LeftGeometry}" />
+							<Button x:Name="PART_HeaderButton" Focusable="False" Foreground="{DynamicResource TextIconBrush}" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Grid.Row="0" Style="{StaticResource ButtonCustom}" />
+							<Button x:Name="PART_NextButton" Width="50" Foreground="{DynamicResource TextIconBrush}" HorizontalAlignment="Right" Height="50" Padding="16" Grid.Column="2" Focusable="False" Grid.Row="0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RightGeometry}" />
 							<Grid Width="240" Height="240" x:Name="PART_MonthView" Margin="10" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Visibility="Visible">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition />
@@ -10498,35 +10500,33 @@
 	<Style x:Key="TabControlBaseStyle" TargetType="TabControl">
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
-		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Foreground" Value="White" />
 		<Setter Property="ItemContainerStyle" Value="{StaticResource TabItemStyle}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TabControl">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-						<Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition x:Name="ColumnDefinition0" />
-								<ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
-							</Grid.ColumnDefinitions>
-							<Grid.RowDefinitions>
-								<RowDefinition x:Name="RowDefinition0" Height="Auto" />
-								<RowDefinition x:Name="RowDefinition1" Height="*" />
-							</Grid.RowDefinitions>
-							<TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-							<Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
-								<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-							</Border>
-						</Grid>
-					</Border>
+					<Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition x:Name="ColumnDefinition0" />
+							<ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition x:Name="RowDefinition0" Height="Auto" />
+							<RowDefinition x:Name="RowDefinition1" Height="*" />
+						</Grid.RowDefinitions>
+						<TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
+						<Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,1,0,0'}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+							<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="TabStripPlacement" Value="Bottom">
 							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
 							<Setter TargetName="RowDefinition1" Property="Height" Value="Auto" />
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="1" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="0,0,0,1" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,0,0,1'}" />
 						</Trigger>
 						<Trigger Property="TabStripPlacement" Value="Left">
 							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
@@ -10537,7 +10537,7 @@
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
 							<Setter TargetName="contentPanel" Property="Grid.Column" Value="1" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="1,0,0,0" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,0,0,0'}" />
 						</Trigger>
 						<Trigger Property="TabStripPlacement" Value="Right">
 							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
@@ -10548,7 +10548,7 @@
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
 							<Setter TargetName="contentPanel" Property="Grid.Column" Value="0" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="0,0,1,0" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,0,1,0'}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -12816,29 +12816,27 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TabControl">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-						<Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition x:Name="ColumnDefinition0" />
-								<ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
-							</Grid.ColumnDefinitions>
-							<Grid.RowDefinitions>
-								<RowDefinition x:Name="RowDefinition0" Height="Auto" />
-								<RowDefinition x:Name="RowDefinition1" Height="*" />
-							</Grid.RowDefinitions>
-							<UniformGrid Rows="1" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-							<Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
-								<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-							</Border>
-						</Grid>
-					</Border>
+					<Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition x:Name="ColumnDefinition0" />
+							<ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition x:Name="RowDefinition0" Height="Auto" />
+							<RowDefinition x:Name="RowDefinition1" Height="*" />
+						</Grid.RowDefinitions>
+						<UniformGrid Rows="1" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
+						<Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,1,0,0'}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+							<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="TabStripPlacement" Value="Bottom">
 							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
 							<Setter TargetName="RowDefinition1" Property="Height" Value="Auto" />
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="1" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="0,0,0,1" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,0,0,1'}" />
 						</Trigger>
 						<Trigger Property="TabStripPlacement" Value="Left">
 							<Setter TargetName="RowDefinition0" Property="Height" Value="*" />
@@ -12847,7 +12845,7 @@
 							<Setter TargetName="ColumnDefinition1" Property="Width" Value="*" />
 							<Setter TargetName="contentPanel" Property="Grid.Column" Value="1" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="1,0,0,0" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,0,0,0'}" />
 							<Setter TargetName="headerPanel" Property="Grid.Column" Value="0" />
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
 							<Setter TargetName="headerPanel" Property="Rows" Value="0" />
@@ -12860,7 +12858,7 @@
 							<Setter TargetName="ColumnDefinition1" Property="Width" Value="Auto" />
 							<Setter TargetName="contentPanel" Property="Grid.Column" Value="0" />
 							<Setter TargetName="contentPanel" Property="Grid.Row" Value="0" />
-							<Setter TargetName="contentPanel" Property="BorderThickness" Value="0,0,1,0" />
+							<Setter TargetName="contentPanel" Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='0,0,1,0'}" />
 							<Setter TargetName="headerPanel" Property="Grid.Column" Value="1" />
 							<Setter TargetName="headerPanel" Property="Grid.Row" Value="0" />
 							<Setter TargetName="headerPanel" Property="Rows" Value="0" />
@@ -12890,6 +12888,7 @@
 		<Setter Property="hc:BorderElement.CornerRadius" Value="0,0,4,4" />
 	</Style>
 	<Style x:Key="TabControlCapsule" TargetType="TabControl">
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="hc:TitleElement.BorderBrush" Value="{DynamicResource PrimaryBrush}" />
 		<Setter Property="hc:TitleElement.Background" Value="{DynamicResource RegionBrush}" />
@@ -12912,7 +12911,7 @@
 							<RowDefinition x:Name="RowDefinition1" Height="*" />
 						</Grid.RowDefinitions>
 						<UniformGrid Rows="1" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-						<Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+						<Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
 							<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						</Border>
 					</Grid>
