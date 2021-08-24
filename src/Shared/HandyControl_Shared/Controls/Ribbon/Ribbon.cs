@@ -129,7 +129,7 @@ namespace HandyControl.Controls
             base.OnApplyTemplate();
 
             _tabHeaderItemsControl = GetTemplateChild(TabHeaderItemsControl) as ItemsControl;
-            if (_tabHeaderItemsControl is {ItemsSource: null})
+            if (_tabHeaderItemsControl is { ItemsSource: null })
             {
                 _tabHeaderItemsControl.ItemsSource = _tabHeaderItemsSource;
             }
@@ -244,7 +244,7 @@ namespace HandyControl.Controls
         {
             base.OnSelectionChanged(e);
 
-            if (e.AddedItems is not {Count: > 0})
+            if (e.AddedItems is not { Count: > 0 })
             {
                 return;
             }
@@ -328,7 +328,7 @@ namespace HandyControl.Controls
             var count = Items.Count;
             for (var index = 0; index < count; ++index)
             {
-                if (ItemContainerGenerator.ContainerFromIndex(index) is RibbonTab {IsVisible: true})
+                if (ItemContainerGenerator.ContainerFromIndex(index) is RibbonTab { IsVisible: true })
                 {
                     return index;
                 }
