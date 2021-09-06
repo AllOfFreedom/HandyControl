@@ -13,9 +13,9 @@
     <PackageTags>WPF C# Control</PackageTags>
     <PackageReleaseNotes>Changes are detailed at https://github.com/HandyOrg/HandyControl/releases</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>3.2.0.32</AssemblyVersion>
-    <Version>3.2.0.32</Version>
-    <FileVersion>3.2.0.32</FileVersion>
+    <AssemblyVersion>3.2.0.33</AssemblyVersion>
+    <Version>3.2.0.33</Version>
+    <FileVersion>3.2.0.33</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
