@@ -35,6 +35,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\DrawerContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Growl\GrowlWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Image\ImageBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\AutoCompleteTextBox\AutoCompleteTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\AutoCompleteTextBox\AutoCompleteTextBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\CheckComboBox\CheckComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\CheckComboBox\CheckComboBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\DecimalBox.cs" />
@@ -90,8 +92,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\TwoWayRangeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\RunningBlock\RunningBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\TagContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\HighlightTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\SimpleText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Window\GlowWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\EnumItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\PanelUvSize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\BooleanArr2BooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Generator\DateTimeRangeComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\VisualWrapping.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Flex\FlexContentJustify.cs" />
@@ -376,6 +382,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Generator\HatchBrushGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\AnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ArithmeticHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\BindingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ColorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ConfigHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\DesignerHelper.cs" />
@@ -421,6 +428,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Themes\Basic\Brushes.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\AutoCompleteTextBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\AutoCompleteTextBoxBaseStyle.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\DataGridBaseStyle.xaml">
       <SubType>Designer</SubType>
     </None>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Ribbon.xaml">
