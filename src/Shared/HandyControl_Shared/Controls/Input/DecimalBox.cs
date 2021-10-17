@@ -129,7 +129,7 @@ namespace HandyControl.Controls
                 SetCurrentValue(ErrorStrProperty, string.Empty);
                 SetCurrentValue(IsErrorProperty, ValueBoxes.FalseBox);
             }
-            else if (double.TryParse(_textBox.Text, out var value))
+            else if (decimal.TryParse(_textBox.Text, out var value))
             {
                 Value = value;
 
