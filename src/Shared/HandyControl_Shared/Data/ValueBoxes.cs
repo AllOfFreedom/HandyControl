@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 
 namespace HandyControl.Data
 {
@@ -12,11 +11,9 @@ namespace HandyControl.Data
 
         internal static object FalseBox = false;
 
-        internal static object VisibleBox = Visibility.Visible;
+        internal static object VerticalBox = Orientation.Vertical;
 
-        internal static object CollapsedBox = Visibility.Collapsed;
-
-        internal static object HiddenBox = Visibility.Hidden;
+        internal static object HorizontalBox = Orientation.Horizontal;
 
         internal static object Double0Box = .0;
 
@@ -66,15 +63,7 @@ namespace HandyControl.Data
 
         internal static object BooleanBox(bool value) => value ? TrueBox : FalseBox;
 
-        internal static object VisibilityBox(Visibility value)
-        {
-            return value switch
-            {
-                Visibility.Visible => VisibleBox,
-                Visibility.Hidden => HiddenBox,
-                Visibility.Collapsed => CollapsedBox,
-                _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
-            };
-        }
+        internal static object OrientationBox(Orientation value) =>
+            value == Orientation.Horizontal ? HorizontalBox : VerticalBox;
     }
 }
