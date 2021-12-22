@@ -12,9 +12,9 @@
     <PackageTags>WPF C# Control</PackageTags>
     <PackageReleaseNotes>Changes are detailed at https://github.com/HandyOrg/HandyControl/releases</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <Version>3.3.0.44</Version>
-    <AssemblyVersion>3.3.0.44</AssemblyVersion>
-    <FileVersion>3.3.0.44</FileVersion>
+    <Version>3.3.0.45</Version>
+    <AssemblyVersion>3.3.0.45</AssemblyVersion>
+    <FileVersion>3.3.0.45</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Net40|AnyCPU' ">
